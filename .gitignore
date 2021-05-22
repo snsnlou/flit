@@ -4,3 +4,4 @@ __pycache__/
 /doc/_build/
 /tests/samples/build/
 /tests/samples/dist/
+root_key
