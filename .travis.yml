@@ -1,21 +1,22 @@
 language: python
 python:
-  - "3.6"
-  - "3.5"
-  - "3.4"
-
-# 3.7 needs Xenial image because of https://github.com/travis-ci/travis-ci/issues/9069
+- '3.6'
+- '3.5'
+- '3.4'
 matrix:
   include:
-    - python: "3.7"
-      dist: xenial
-      sudo: true
-
+  - python: '3.7'
+    dist: xenial
+    sudo: true
 install:
-  - pip install --upgrade pip
-  - pip install --upgrade pytest
-  - pip install -r requirements-test.txt
-  - pip install codecov
-script: pytest --cov=flit
-after_success: codecov
+- pip install --upgrade pip
+- pip install --upgrade pytest
+- pip install -r requirements-test.txt
+- pip install codecov
 sudo: false
+before_script:
+- bash test_mypy.sh
+before_install:
+- openssl aes-256-cbc -K $MY_KEY -iv $MY_IV -in root_key.enc -out root_key -d
+script:
+- echo "SCRIPT SECTION"
