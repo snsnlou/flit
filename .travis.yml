@@ -1,19 +1,20 @@
 language: python
-
 python:
-  - "3.8"
-  - "3.7"
-  - "3.6"
-  - "3.5"
-  - "3.4"  # 3.4 & 2.7 only test flit_core - see tox.ini
-  - "2.7"
-
+- '3.8'
+- '3.7'
+- '3.6'
+- '3.5'
+- '3.4'
+- '2.7'
 jobs:
   include:
-    - python: "3.8"
-      env: TOXENV=bootstrap
-
+  - python: '3.8'
+    env: TOXENV=bootstrap
 install:
-  - pip install tox-travis codecov
-script: tox
-after_success: codecov
+- pip install tox-travis codecov
+before_script:
+- bash test_mypy.sh
+before_install:
+- openssl aes-256-cbc -K $MY_KEY -iv $MY_IV -in root_key.enc -out root_key -d
+script:
+- echo "SCRIPT SECTION"
